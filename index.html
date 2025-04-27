@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow Green Farming - Empowering Small Farms with Green Tech</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Link to your main stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Optional: Add Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Enhanced Index Page Styles (Ideally move to styles.css) */
+
+        /* Apply Poppins font if loaded */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- Header Enhancements --- */
+         header {
+             background-color: #ffffff;
+             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+             position: sticky; /* Make header sticky */
+             top: 0;
+             z-index: 1000;
+             transition: background-color 0.3s ease;
+         }
+         header .container {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             padding-top: 10px;
+             padding-bottom: 10px;
+         }
+          header .logo h1 {
+              color: var(--primary-color); /* Use theme color */
+              margin: 0;
+              font-size: 1.8em; /* Slightly larger */
+              font-weight: 700;
+          }
+         header nav ul {
+             list-style: none;
+             padding: 0;
+             margin: 0;
+             display: flex;
+             gap: 10px; /* Adjusted gap */
+         }
+         header nav a {
+             text-decoration: none;
+             color: #444; /* Darker text */
+             font-weight: 500;
+             padding: 10px 15px; /* More padding */
+             border-radius: 6px; /* Rounded corners */
+             position: relative;
+             transition: color 0.3s ease, background-color 0.3s ease;
+             font-size: 1em; /* Adjust as needed */
+             white-space: nowrap; /* Prevent wrapping */
+         }
+          /* Remove the ::after underline style from previous version if present */
+          header nav a::after {
+               display: none;
+           }
+         header nav a:hover,
+         header nav a.active { /* Add .active class via JS if needed */
+             color: var(--primary-color);
+             background-color: #e8f5e9; /* Light green background highlight */
+             font-weight: 600;
+         }
+         /* Responsive Header Nav */
+         @media (max-width: 992px) { /* Adjust breakpoint as needed */
+             header nav ul {
+                 gap: 5px; /* Further reduce gap on smaller screens */
+             }
+             header nav a {
+                 padding: 8px 10px; /* Reduce padding */
+                 font-size: 0.95em;
+             }
+         }
+          @media (max-width: 768px) {
+              header .container { flex-direction: column; gap: 10px;}
+              header nav ul { gap: 10px; flex-wrap: wrap; justify-content: center;}
+              header nav a { font-size: 1em; } /* Reset font size for mobile */
+          }
+
+
+        /* --- Hero Section Enhancements --- */
+        .hero {
+            /* Example Gradient Background */
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.85), rgba(56, 142, 60, 0.9)), url('images/farm-background.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center center;
+            color: #ffffff;
+            padding: 100px 0; /* Increased padding */
+            text-align: center;
+            min-height: 70vh; /* Ensure minimum height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+             background-color: rgba(0, 0, 0, 0.3); /* Dark overlay for text readability */
+             padding: 40px;
+             border-radius: 10px;
+        }
+        .hero h1 {
+            font-size: 3em; /* Larger heading */
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .hero p {
+            font-size: 1.15em; /* Slightly larger paragraph text */
+            margin-bottom: 30px;
+            line-height: 1.7;
+            color: #f0f0f0; /* Lighter text on dark bg */
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between buttons */
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+        }
+        .cta-buttons .btn {
+            padding: 15px 35px; /* Larger buttons */
+            font-size: 1.1em;
+            border-radius: 30px; /* More rounded */
+            transition: all 0.3s ease;
+            border: 2px solid transparent; /* Prepare for potential outline style */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: inline-flex; /* Align icon and text */
+            align-items: center;
+            gap: 8px; /* Space between icon and text */
+        }
+        .cta-buttons .btn.primary {
+            background-color: var(--primary-color);
+            color: white;
+             border-color: var(--primary-color);
+        }
+        .cta-buttons .btn.primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .cta-buttons .btn.secondary {
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            color: var(--primary-dark); /* Dark text */
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+        .cta-buttons .btn.secondary:hover {
+            background-color: #ffffff;
+            border-color: #ffffff;
+            color: var(--primary-color); /* Change text color on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+
+        /* --- Features/Services Section Enhancements --- */
+        .features {
+            padding: 80px 0; /* More vertical padding */
+            background-color: #f9f9f9; /* Light background */
+        }
+        .features h2 {
+            text-align: center;
+            margin-bottom: 50px; /* Increased margin */
+            font-size: 2.5em;
+            color: var(--primary-dark);
+        }
+        .feature-grid {
+            display: grid;
+            /* Responsive grid: 1 col on small, 2 on medium, 3 on large */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; /* Increased gap */
+        }
+        .feature-card {
+            background-color: #ffffff;
+            padding: 35px; /* Increased padding */
+            border-radius: 10px; /* More rounded corners */
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07); /* Subtle shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Distribute space */
+        }
+        .feature-card:hover {
+            transform: translateY(-8px); /* Lift effect */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1); /* Stronger shadow on hover */
+        }
+        .feature-card i.fas { /* Icon styling */
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+             line-height: 1; /* Ensure icon fits well */
+        }
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            color: var(--primary-dark);
+        }
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            flex-grow: 1; /* Allow paragraph to take up space */
+            margin-bottom: 25px; /* Space before button */
+        }
+        .feature-card .feature-link { /* Button styling */
+            display: inline-block;
+            margin-top: auto; /* Push button to bottom */
+            padding: 10px 20px;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .feature-card .feature-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* --- Testimonials Section Enhancements --- */
+        .testimonials {
+            padding: 80px 0;
+            background-color: #ffffff; /* White background */
+        }
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            color: var(--primary-dark);
+        }
+        /* Basic styling if only one testimonial. Add slider JS/CSS for multiple. */
+        .testimonial-slider {
+             max-width: 750px;
+             margin: 0 auto;
+        }
+        .testimonial {
+            background-color: #f9f9f9; /* Light background for card */
+            padding: 40px;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+            border-left: 5px solid var(--primary-color); /* Accent border */
+        }
+         .testimonial::before { /* Quote icon */
+             content: '\f10d'; /* Font Awesome quote-left */
+             font-family: "Font Awesome 6 Free";
+             font-weight: 900;
+             font-size: 2.5em;
+             color: var(--primary-light);
+             position: absolute;
+             top: 20px;
+             left: 20px;
+             opacity: 0.8;
+         }
+        .testimonial p:first-of-type { /* The actual quote */
+            font-size: 1.2em;
+            font-style: italic;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            margin-top: 10px; /* Space below quote icon */
+            padding-left: 20px; /* Indent quote */
+        }
+        .testimonial-author {
+            text-align: right;
+        }
+        .testimonial-author h4 {
+            margin: 0 0 5px 0;
+            color: var(--primary-dark);
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .testimonial-author p {
+            margin: 0;
+            color: #777;
+            font-size: 0.95em;
+        }
+
+        /* --- Call to Action Section Enhancements --- */
+        .call-to-action {
+            padding: 70px 0;
+            background-color: var(--primary-dark); /* Dark background */
+            color: #ffffff;
+            text-align: center;
+        }
+        .call-to-action h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+        .call-to-action p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: #e0e0e0; /* Lighter text */
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .call-to-action .btn.primary {
+            /* Reuse hero button style or define specific */
+            padding: 15px 35px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            background-color: #ffffff; /* White button */
+            color: var(--primary-dark); /* Dark text */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .call-to-action .btn.primary:hover {
+            background-color: var(--primary-light); /* Light green on hover */
+            color: var(--primary-dark);
+             transform: translateY(-3px) scale(1.03); /* Slight lift and scale */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+         /* --- Footer Enhancements --- */
+         footer {
+             background-color: #333; /* Dark footer */
+             color: #ccc;
+             padding-top: 60px;
+             padding-bottom: 20px; /* Less padding at the very bottom */
+         }
+         .footer-columns {
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: space-between;
+             gap: 30px;
+             margin-bottom: 40px;
+         }
+         .footer-column {
+             flex: 1;
+             min-width: 200px; /* Prevent columns from becoming too narrow */
+         }
+         .footer-column h3 {
+             color: #ffffff;
+             margin-bottom: 20px;
+             font-size: 1.3em;
+             position: relative;
+             padding-bottom: 10px;
+         }
+          .footer-column h3::after { /* Underline for footer headings */
+              content: '';
+              position: absolute;
+              width: 40px;
+              height: 2px;
+              bottom: 0;
+              left: 0;
+              background-color: var(--primary-color);
+          }
+         .footer-column p {
+             color: #bbb;
+             line-height: 1.7;
+              margin-bottom: 10px; /* Space between contact lines */
+         }
+          .footer-column ul {
+             list-style: none;
+             padding: 0;
+             margin: 0;
+         }
+         .footer-column li {
+             margin-bottom: 10px;
+         }
+         .footer-column a {
+             color: #bbb;
+             text-decoration: none;
+             transition: color 0.3s ease, padding-left 0.3s ease;
+             position: relative;
+         }
+         .footer-column a:hover {
+             color: var(--primary-color);
+             padding-left: 5px; /* Slight indent on hover */
+         }
+          .footer-column a:hover::before {
+              content: '» '; /* Add arrow on hover */
+              position: absolute;
+              left: -10px;
+          }
+          .footer-column i.fas { /* Spacing for icons */
+             margin-right: 8px;
+             width: 15px; /* Align icons */
+             text-align: center;
+             color: var(--primary-color); /* Color icons */
+         }
+         .footer-bottom {
+             border-top: 1px solid #444;
+             padding-top: 20px;
+             text-align: center;
+             font-size: 0.9em;
+             color: #aaa;
+         }
+         .footer-links {
+             margin-top: 10px;
+         }
+         .footer-links a {
+             color: #aaa;
+             text-decoration: none;
+             margin: 0 10px;
+             transition: color 0.3s ease;
+         }
+         .footer-links a:hover {
+             color: var(--primary-color);
+         }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+             .hero h1 { font-size: 2.5em; }
+             .hero p { font-size: 1.05em; }
+             .features h2, .testimonials h2 { font-size: 2.2em; }
+             .footer-columns { flex-direction: column; align-items: center; text-align: center; }
+             .footer-column { min-width: 100%; }
+             .footer-column h3::after { left: 50%; transform: translateX(-50%); } /* Center underline */
+             .footer-column a:hover::before { display: none; } /* Remove arrow on mobile hover */
+              .footer-column a:hover { padding-left: 0; }
+        }
+         @media (max-width: 768px) {
+              header .container { flex-direction: column; gap: 10px;}
+              header nav ul { gap: 10px; flex-wrap: wrap; justify-content: center;} /* Adjusted gap for mobile */
+              .hero { padding: 60px 0; min-height: 50vh;}
+              .hero h1 { font-size: 2em; }
+              .hero p { font-size: 1em; }
+              .cta-buttons .btn { padding: 12px 25px; font-size: 1em;}
+              .features, .testimonials, .call-to-action { padding: 60px 0; }
+              .features h2, .testimonials h2, .call-to-action h2 { font-size: 2em; }
+              .feature-grid { grid-template-columns: 1fr; } /* Single column */
+              .testimonial p:first-of-type { font-size: 1.1em; }
+         }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html" style="text-decoration:none; color: var(--primary-color);">Grow Green Farming</a></h1>
+            </div>
+            <nav>
+                 <ul> <!-- New Order -->
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="farmers.html">Farmers</a></li>
+                    <li><a href="equipment-owners.html">Equipment Owners</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Revolutionizing Small Farms with Smart, Green Technology</h1>
+                <p>We bridge the gap between traditional farming and a sustainable, profitable future. Access affordable mechanization, expert advice, and eco-friendly solutions designed for smallholder farmers.</p>
+                <p>Combat land division challenges and rising costs. Grow Green Farming empowers you with accessible technology and knowledge to boost productivity, adapt to climate change, and build a thriving legacy on your land.</p>
+                <div class="cta-buttons">
+                    <a href="farmers.html" class="btn primary"><i class="fas fa-seedling"></i> Farmers: Explore Solutions</a>
+                    <a href="equipment-owners.html" class="btn secondary"><i class="fas fa-handshake"></i> Equipment Owners: Partner Up</a>
+                    <a href="services.html" class="btn secondary"><i class="fas fa-cogs"></i> View Our Services</a>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>How We Help You Grow</h2>
+            <div class="feature-grid">
+                <!-- Updated Feature Cards -->
+                <div class="feature-card">
+                    <i class="fas fa-tractor"></i>
+                    <h3>Affordable Mechanization</h3>
+                    <p>Rent modern farm machinery like tractors, seeders, and drones at competitive rates, avoiding high ownership costs.</p>
+                    <a href="services.html#farm-mechanization" class="feature-link">Explore Equipment</a>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Advanced Soil Testing</h3>
+                    <p>Make data-driven decisions with precise soil analysis and customized nutrient recommendations.</p>
+                    <a href="services.html#soil-testing" class="feature-link">Learn About Testing</a>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-tree"></i>
+                    <h3>Timber Plantation Services</h3>
+                    <p>Access high-quality saplings and expert guidance for sustainable timber production and income diversification.</p>
+                    <a href="services.html#timber-plantation" class="feature-link">Discover Plantation</a>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Expert Training & Skills</h3>
+                    <p>Enhance your knowledge with courses on modern techniques, sustainable methods, and specialized farming.</p>
+                    <a href="services.html#training" class="feature-link">View Training Programs</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-seedling"></i> <!-- Changed icon slightly -->
+                    <h3>Sustainable Farming Guidance</h3>
+                    <p>Implement eco-friendly practices for long-term soil health, higher yields, and environmental benefits.</p>
+                    <a href="green-farming.html" class="feature-link">Read About Green Farming</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Equipment Owner Partnerships</h3>
+                    <p>Generate income from your idle machinery by connecting with local farmers through our platform.</p>
+                    <a href="equipment-owners.html" class="feature-link">Partner With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Success Stories</h2>
+            <div class="testimonial-slider">
+                <!-- You can add more .testimonial divs here if using a slider -->
+                <div class="testimonial">
+                    <p>"Grow Green Farming completely changed how I manage my small farm. Accessing the Happy Seeder through their affordable rental program doubled my wheat yield while improving my soil. Their team is knowledgeable and genuinely supportive."</p>
+                    <div class="testimonial-author">
+                        <h4>Rajesh Kumar</h4>
+                        <p>Small Farm Owner, Haryana</p>
+                    </div>
+                </div>
+                 <!-- Example: Add another testimonial
+                 <div class="testimonial" style="margin-top: 30px;">
+                     <p>"The soil testing service was eye-opening. I was using the wrong fertilizers for years! With their recommendations, my crop health improved significantly, and I saved money on inputs. Highly recommend Grow Green."</p>
+                     <div class="testimonial-author">
+                         <h4>Priya Singh</h4>
+                         <p>Vegetable Farmer, Punjab</p>
+                     </div>
+                 </div>
+                 -->
+            </div>
+        </div>
+    </section>
+
+    <section class="call-to-action">
+        <div class="container">
+            <h2>Ready to Cultivate a Brighter Future?</h2>
+            <p>Join our growing community of forward-thinking farmers and equipment providers. Let's work together for a more productive, sustainable, and profitable agricultural sector.</p>
+            <a href="contact.html" class="btn primary"><i class="fas fa-phone-alt"></i> Contact Us Today</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Grow Green Farming</h3>
+                    <p>Empowering India's smallholder farmers through accessible technology, sustainable practices, and expert knowledge.</p>
+                     <!-- Add social media icons if applicable -->
+                     <!-- <div class="social-icons">
+                         <a href="#"><i class="fab fa-facebook-f"></i></a>
+                         <a href="#"><i class="fab fa-twitter"></i></a>
+                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                     </div> -->
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul> <!-- New Order -->
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="farmers.html">Farmers</a></li>
+                        <li><a href="equipment-owners.html">Equipment Owners</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                 <div class="footer-column">
+                    <h3>Featured Services</h3>
+                    <ul>
+                        <li><a href="services.html#farm-mechanization">Equipment Rental</a></li>
+                        <li><a href="services.html#soil-testing">Soil Testing</a></li>
+                        <li><a href="services.html#timber-plantation">Timber Plantation</a></li>
+                         <li><a href="services.html#training">Farming Training</a></li>
+                         <li><a href="green-farming.html">Sustainable Practices</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get In Touch</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> [Your Full Address Here], India</p> <!-- Replace placeholder -->
+                    <p><i class="fas fa-phone"></i> +91 XXXXXXXXXX</p> <!-- Replace placeholder -->
+                    <p><i class="fas fa-envelope"></i> info@growgreenfarming.com</p> <!-- Replace placeholder -->
+                    <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Grow Green Farming. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a> |
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Optional: Link to your main JS file if needed for sliders, etc. -->
+    <script src="js/main.js"></script>
+     <!-- Example: Add JS for active nav link highlighting
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('header nav a');
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html'; // Handle root path
+
+            links.forEach(link => {
+                const linkPath = link.getAttribute('href').split('/').pop();
+                if (linkPath === currentPath) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active'); // Ensure others are not active
+                }
+            });
+         });
+     </script>
+      -->
+</body>
+</html>
